@@ -1,0 +1,38 @@
+
+<div class="currency-update">
+    <h2 class="text-middle-align">Select the units:</h2>
+    <div class="currency-select">
+
+        <mat-form-field class="select-style"> 
+            <mat-select [(ngModel)]="selectedValueLeft">
+              @for (currency of currencies; track currency) {
+                <mat-option [value]="currency.id">{{currency.description}}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+          <h2 class="text-middle-align">to</h2>
+          <mat-form-field class="select-style">
+            <mat-select [(ngModel)]="selectedValueRight">
+              @for (currency of currencies; track currency) {
+                <mat-option [value]="currency.id">{{currency.description}}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+    </div>
+    @if (selectedValueLeft && selectedValueRight) {
+
+        <div class="values">
+            <h2 class="text-middle-align">Type the value you want to convert:</h2>
+            <mat-form-field>
+                <mat-label>Type the value here</mat-label>
+                <input matInput type="text" [(ngModel)]="currencyValue" (keyup)="convertCurrency()">
+            </mat-form-field>
+            <div class="result">
+                <h2>converted to {{ selectedCurrency }} is:</h2>
+                <h1>{{ selectedSulfix }} {{ convertedValue}}</h1>
+            </div>
+            
+        </div>
+    }
+    
+</div>
