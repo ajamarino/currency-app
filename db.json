@@ -2,28 +2,39 @@
   "currencies": [
     {
       "id": 1,
+      "name": "Dolar",
       "description": "USD",
-      "value": 1
+      "value": 1,
+      "sign": "$"
+
     },
     {
       "id": 2,
+      "name": "Euro",
       "description": "EUR",
-      "value": 0.9
+      "value": 0.9173900988,
+      "sign": "€"
     },
     {
       "id": 3,
+      "name": "Libra",
       "description": "GBP",
-      "value": 0.8
+      "value": 0.7852401109,
+      "sign": "£"
     },
     {
       "id": 4,
+      "name": "Yen",
       "description": "JPY",
-      "value": 1.45
+      "value": 149.266214602,
+      "sign": "¥"
     },
     {
       "id": 5,
+      "name": "Real",
       "description": "BRL",
-      "value": 0.5
+      "value": 4.9439906268,
+      "sign": "R$"
     }
   ]
 }

@@ -5,11 +5,13 @@ import { Currency } from '../../interfaces/currency';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { CurrencyService } from '../../sevices/currency.service';
+import { CurrencyPipe } from '@angular/common';
+import { CurrencyPipeAlefe } from '../../pipes/currency-pipe.pipe';
 
 @Component({
   selector: 'app-currency-update',
   standalone: true,
-  imports: [MatFormFieldModule, MatSelectModule, MatInputModule, FormsModule, CurrencyUpdateComponent],
+  imports: [MatFormFieldModule, MatSelectModule, MatInputModule, FormsModule, CurrencyUpdateComponent, CurrencyPipe, CurrencyPipeAlefe],
   templateUrl: './currency-update.component.html',
   styleUrl: './currency-update.component.sass'
 })
@@ -35,7 +37,7 @@ ngOnInit(): void {
 convertCurrency():void{
   if(this.selectedValueLeft && this.selectedValueRight){
 
-    let exchangeRate = this.returnCurrencyObj(this.selectedValueLeft).value / this.returnCurrencyObj(this.selectedValueRight).value;
+    let exchangeRate = this.returnCurrencyObj(this.selectedValueRight).value / this.returnCurrencyObj(this.selectedValueLeft).value;
     this.convertedValue = this.currencyValue * exchangeRate;
   }
 }

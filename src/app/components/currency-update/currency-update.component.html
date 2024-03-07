@@ -27,8 +27,8 @@
             </mat-form-field>
             <div class="result">
               @if(returnCurrencyObj(selectedValueRight) !== undefined){
-                <h2>converted to {{ returnCurrencyObj(selectedValueRight).description }} is:</h2>
-                <h1>{{ returnCurrencyObj(selectedValueRight).description }} {{ convertedValue}}</h1>
+                <h2>converted to {{ returnCurrencyObj(selectedValueRight).name }} is:</h2>
+                <h1>{{ returnCurrencyObj(selectedValueRight).sign }} {{ convertedValue | currencyAlefe }}</h1>
               }
             </div>
 
