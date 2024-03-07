@@ -4,6 +4,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { Currency } from '../../interfaces/currency';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
+import { CurrencyService } from '../../sevices/currency.service';
 
 @Component({
   selector: 'app-currency-update',
@@ -12,41 +13,44 @@ import { MatInputModule } from '@angular/material/input';
   templateUrl: './currency-update.component.html',
   styleUrl: './currency-update.component.sass'
 })
+
+
 export class CurrencyUpdateComponent {
-  currencies : Currency[] = [{
-    id: 1,
-    description: 'USD',
-    value: 1
-  }, {
-    id: 2,
-    description: 'EUR',
-    value: 0.9
-  }, {
-    id: 3,
-    description: 'GBP',
-    value: 0.8
-  },
-{
-    id: 4,
-    description: 'JPY',
-    value: 110
-},{
-    id: 5,
-    description: 'BRL',
-    value: 4
-}];
+currencies: Currency[] = [];
+
 
 selectedValueLeft!: number;
 selectedValueRight!: number;
-selectedCurrency: String = 'Dolar';
-selectedSulfix: String = 'USD';
-convertedValue: number = 0; 
+convertedValue: number = 0;
 currencyValue!: number;
+selectedCurrency!: Currency;
+
+constructor(private currencyService: CurrencyService ){}
+
+ngOnInit(): void {
+  this.getCurrencyValues();
+  console.log(this.selectedValueLeft)
+}
 
 convertCurrency():void{
   if(this.selectedValueLeft && this.selectedValueRight){
-    this.convertedValue = this.currencyValue * 5;
+
+    let exchangeRate = this.returnCurrencyObj(this.selectedValueLeft).value / this.returnCurrencyObj(this.selectedValueRight).value;
+    this.convertedValue = this.currencyValue * exchangeRate;
   }
-  console.log("moment")
+}
+
+returnCurrencyObj(id: number): Currency {
+  this.currencies.forEach(currency => {
+    if(currency.id == id){
+      this.selectedCurrency = currency;
+    }
+  });
+  return this.selectedCurrency;
+}
+
+getCurrencyValues(): void {
+   this.currencyService.getCurrencyValues().subscribe(currencies => this.currencies = currencies);
+    console.log(this.currencies )
 }
 }

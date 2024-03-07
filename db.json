@@ -1,0 +1,29 @@
+{
+  "currencies": [
+    {
+      "id": 1,
+      "description": "USD",
+      "value": 1
+    },
+    {
+      "id": 2,
+      "description": "EUR",
+      "value": 0.9
+    },
+    {
+      "id": 3,
+      "description": "GBP",
+      "value": 0.8
+    },
+    {
+      "id": 4,
+      "description": "JPY",
+      "value": 1.45
+    },
+    {
+      "id": 5,
+      "description": "BRL",
+      "value": 0.5
+    }
+  ]
+}
